@@ -12,7 +12,19 @@
 		</style>
 	</head>
 	<body>
+		<div style="background-color: black">
+			<select name="buttons" id="buttons">
+				<option value="Icosahedron" selected>Icosahedron</option>
+				<option value="Square">Square</option>
+				<option value="Cone">Cone</option>
+				<option value="ChooseFile">Choose File</option>
+			</select>
+			<form style="display: none;" id="inputFile">
+				<input type="file" id="file" />
+				<label for="file">Selected file:</label>
+				<input type="submit" value="send" />
+			</form>
+		</div>
 		<script src="./js/script.js" type="module"></script>
 	</body>
 </html> 
-
