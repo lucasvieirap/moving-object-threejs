@@ -30,11 +30,17 @@ file.addEventListener('change', (e)=> {
 	e.preventDefault()
 	selectedForm = ""
 	const fileURL = new URL(URL.createObjectURL(file.files[0]), import.meta.url)
-	console.log(fileURL.href)
 	const assetLoader = new GLTFLoader()
 	assetLoader.load(fileURL.href, function(gltf) {
 		const model = gltf.scene
 		scene.add(model)
+		const modelWireframe = new THREE.MeshStandardMaterial({
+			color: 0xffffff,
+			wireframe: true
+		})
+		const modelWireframeMesh = new THREE.Mesh(model.getObjectByName('Suzanne').geometry, modelWireframe)
+		scene.add(modelWireframeMesh)
+		modelWireframeMesh.scale.setScalar(1.001)
 	}, undefined, function(err) {
 		console.log(err)
 	})
